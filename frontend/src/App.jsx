@@ -18,7 +18,7 @@ const props = {
 const App = () => {
   return (
     <div className="App">
-      <PhotoListItem props={props} />
+      <PhotoListItem photo={props} />
     </div>
   );
 };
