@@ -15,10 +15,18 @@ const props = {
   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
 };
 
+const photos = [];
+photos.push(props);
+photos.push(props);
+photos.push(props);
+
+
 const App = () => {
   return (
     <div className="App">
-      <PhotoListItem photo={props} />
+      {photos.map((photo) => (
+        <PhotoListItem key={"id"} photo={photo} />
+      ))}
     </div>
   );
 };
