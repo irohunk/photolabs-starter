@@ -1,13 +1,15 @@
 import React from 'react';
-
+import TopicList from './TopicList';
 import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = () => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
+      <TopicList />
+      <span className="top-nav-bar__liked-photos">Liked Photos: 0</span>
     </div>
-  )
+  );
 }
 
 export default TopNavigation;
