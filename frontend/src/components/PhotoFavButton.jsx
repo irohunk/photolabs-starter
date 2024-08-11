@@ -15,7 +15,7 @@ function PhotoFavButton({ selected, handleToggle }) {
   return (
     <div className={`photo-list__fav-icon ${isFav ? 'active' : ''}`} onClick={handleClick}>
       <div className="photo-list__fav-icon-svg">
-        <FavIcon />    
+        <FavIcon selected={isFav}/>    
       </div>
     </div>
   );
