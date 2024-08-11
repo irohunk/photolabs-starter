@@ -27,7 +27,7 @@ const PhotoListItem = ({ photo, toggleModal }) => {
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={user.profile} alt="" />
         <div className="photo-list__user-info">
-          <span className="photo-list__user-details">{user.username}</span>
+          <span className="photo-list__user-details">{user.name}</span>
           <span className="photo-list__user-location">{location.city}, {location.country}</span>
         </div>
       </div>

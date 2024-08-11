@@ -5,6 +5,7 @@ import PhotoFavButton from './components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 import TopNavigationBar from 'components/TopNavigationBar';
 import TopicList from 'components/TopicList';
+import HomeRoute from 'routes/HomeRoute';
 
 import './App.scss';
 
@@ -13,19 +14,20 @@ import './App.scss';
 
 const App = () => {
   // Sample state to manage favorite photos
-  const [favPhotos, setFavPhotos] = useState([]);
+  // const [favPhotos, setFavPhotos] = useState([]);
 
   // Check if there are any favorite photos
-  const isFavPhotoExist = favPhotos.length > 0;
+  // const isFavPhotoExist = favPhotos.length > 0;
 
-  const toggleModal = (photo) => {
-    console.log('Toggled modal for', photo);
-  };
+  // const toggleModal = (photo) => {
+  //   console.log('Toggled modal for', photo);
+  // };
 
   return (
     <div className="App">
-      <TopNavigationBar isFavPhotoExist={isFavPhotoExist} />
-      <PhotoList toggleModal={toggleModal} />
+      {/* <TopNavigationBar isFavPhotoExist={isFavPhotoExist} />
+      <PhotoList toggleModal={toggleModal} /> */}
+      <HomeRoute />
     </div>
   );
 };
