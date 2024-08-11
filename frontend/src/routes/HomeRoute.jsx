@@ -4,7 +4,7 @@ import PhotoList from '../components/PhotoList';
 import TopicList from 'components/TopicList';
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({ photos, topics }) => {
+const HomeRoute = ({ photos, topics, toggleModal }) => {
   
   const [favPhotos, setFavPhotos] = useState([]);
 
@@ -21,9 +21,9 @@ const HomeRoute = ({ photos, topics }) => {
     });
   };
 
-  const toggleModal = (photo) => {
-    console.log('Toggled modal for', photo);
-  };
+  // const toggleModal = (photo) => {
+  //   console.log('Toggled modal for', photo);
+  // };
 
   return (
     <div className="home-route">

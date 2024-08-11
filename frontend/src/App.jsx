@@ -1,11 +1,7 @@
 import React, {useState} from 'react';
 
-import PhotoListItem from './components/PhotoListItem';
-import PhotoFavButton from './components/PhotoFavButton';
-import PhotoList from 'components/PhotoList';
-import TopNavigationBar from 'components/TopNavigationBar';
-import TopicList from 'components/TopicList';
 import HomeRoute from 'routes/HomeRoute';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 import './App.scss';
 
@@ -16,25 +12,46 @@ import topics from './mocks/topics';
 
 
 const App = () => {
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
   // Sample state to manage favorite photos
   // const [favPhotos, setFavPhotos] = useState([]);
 
   // Check if there are any favorite photos
   // const isFavPhotoExist = favPhotos.length > 0;
 
-  // const toggleModal = (photo) => {
-  //   console.log('Toggled modal for', photo);
-  // };
+  const toggleModal = (photo) => {
+    setSelectedPhoto(photo);
+    console.log('Toggled modal for', photo);
+  };
 
   // const [photoData, setPhotoData] = useState(photos);
   // const [topicData, setTopicData] = useState(topics);
 
+  const closeModal = () => {
+    setSelectedPhoto(null);
+  }
 
   return (
     <div className="App">
       {/* <TopNavigationBar isFavPhotoExist={isFavPhotoExist} />
       <PhotoList toggleModal={toggleModal} /> */}
-      <HomeRoute photos={photos} topics={topics} />
+      <HomeRoute 
+        photos={photos} 
+        topics={topics} 
+        toggleModal={toggleModal}
+      />
+
+      {selectedPhoto && (
+        <div className="photo-details-modal">
+          <button 
+            className="photo-details-modal__close-button"
+            onClick={closeModal}
+          >
+            <span className="closeSymbol" alt="close">X</span>
+          </button>
+          {/* Placeholder for additional content in the modal */}
+        </div>
+      )}
     </div>
   );
 };
