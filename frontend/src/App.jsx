@@ -12,7 +12,7 @@ import topics from './mocks/topics';
 
 
 const App = () => {
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   // Sample state to manage favorite photos
   // const [favPhotos, setFavPhotos] = useState([]);
 
@@ -20,16 +20,12 @@ const App = () => {
   // const isFavPhotoExist = favPhotos.length > 0;
 
   const toggleModal = (photo) => {
-    setSelectedPhoto(photo);
+    setIsModalVisible(!isModalVisible);
     console.log('Toggled modal for', photo);
   };
 
   // const [photoData, setPhotoData] = useState(photos);
   // const [topicData, setTopicData] = useState(topics);
-
-  const closeModal = () => {
-    setSelectedPhoto(null);
-  }
 
   return (
     <div className="App">
@@ -41,17 +37,10 @@ const App = () => {
         toggleModal={toggleModal}
       />
 
-      {selectedPhoto && (
-        <div className="photo-details-modal">
-          <button 
-            className="photo-details-modal__close-button"
-            onClick={closeModal}
-          >
-            <span className="closeSymbol" alt="close">X</span>
-          </button>
-          {/* Placeholder for additional content in the modal */}
-        </div>
-      )}
+      <PhotoDetailsModal 
+        isVisible={isModalVisible} 
+        onClose={toggleModal} 
+      />
     </div>
   );
 };
