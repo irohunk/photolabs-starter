@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import TopNavigationBar from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
+import TopicList from 'components/TopicList';
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = () => {
-  // Assuming `isFavPhotoExist` is managed in a parent component like App.js or directly here
+const HomeRoute = ({ photos, topics }) => {
+  
   const [favPhotos, setFavPhotos] = useState([]);
 
   // Check if there are any favorite photos
@@ -16,8 +17,8 @@ const HomeRoute = () => {
 
   return (
     <div className="home-route">
-      <TopNavigationBar isFavPhotoExist={isFavPhotoExist} />
-      <PhotoList toggleModal={toggleModal} />
+      <TopNavigationBar isFavPhotoExist={isFavPhotoExist} topics={topics} />
+      <PhotoList photos={photos} toggleModal={toggleModal} />
     </div>
   );
 };

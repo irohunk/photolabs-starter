@@ -9,6 +9,9 @@ import HomeRoute from 'routes/HomeRoute';
 
 import './App.scss';
 
+import photos from './mocks/photos';
+import topics from './mocks/topics';
+
 // Note: Rendering a single component to build components in isolation
 
 
@@ -23,11 +26,15 @@ const App = () => {
   //   console.log('Toggled modal for', photo);
   // };
 
+  // const [photoData, setPhotoData] = useState(photos);
+  // const [topicData, setTopicData] = useState(topics);
+
+
   return (
     <div className="App">
       {/* <TopNavigationBar isFavPhotoExist={isFavPhotoExist} />
       <PhotoList toggleModal={toggleModal} /> */}
-      <HomeRoute />
+      <HomeRoute photos={photos} topics={topics} />
     </div>
   );
 };

@@ -19,13 +19,13 @@ const PhotoListItem = ({ photo, toggleModal }) => {
         <PhotoFavButton selected={isFav} onClick={handleToggle} />
         <img 
           className="photo-list__image" 
-          src={urls.regular} 
-          alt="" 
+          src={urls.regular}
+          alt={location.city}
           onClick={() => toggleModal(photo)} 
         />
       </div>
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={user.profile} alt="" />
+        <img className="photo-list__user-profile" src={user.profile} alt={user.name} />
         <div className="photo-list__user-info">
           <span className="photo-list__user-details">{user.name}</span>
           <span className="photo-list__user-location">{location.city}, {location.country}</span>

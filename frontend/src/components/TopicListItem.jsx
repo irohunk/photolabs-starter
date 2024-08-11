@@ -2,12 +2,10 @@ import React from "react";
 
 import "../styles/TopicListItem.scss";
 
-const TopicListItem = ( { slug, label }) => {
+const TopicListItem = ({ topic }) => {
   return (
     <div className="topic-list__item">
-      <a href={`/topics/${slug}`}>
-        <span>{label}</span>
-      </a>
+        <span>{topic.title}</span>
     </div>
   );
 };
