@@ -1,5 +1,6 @@
 import React from 'react';
 import TopicList from './TopicList';
+import FavBadge from './FavBadge';
 import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = () => {
@@ -7,7 +8,7 @@ const TopNavigation = () => {
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <TopicList />
-      <span className="top-nav-bar__liked-photos">Liked Photos: 0</span>
+      <FavBadge isFavPhotoExist={isFavPhotoExist} />
     </div>
   );
 }

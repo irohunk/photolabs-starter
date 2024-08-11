@@ -19,7 +19,6 @@ const App = () => {
   return (
     <div className="App">
       <TopNavigationBar />
-      {/* <TopicList /> */}
       <PhotoList toggleModal={toggleModal} />
     </div>
   );
