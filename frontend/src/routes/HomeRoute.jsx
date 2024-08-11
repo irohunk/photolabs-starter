@@ -27,8 +27,7 @@ const HomeRoute = ({ photos, topics }) => {
     setSelectedPhoto(photo);
   };
 
-  const closeModal = () =>
-  {
+  const closeModal = () =>  {
     setSelectedPhoto(null);
   };
 
