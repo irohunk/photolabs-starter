@@ -12,7 +12,7 @@ const PhotoDetailsModal = ({ isVisible, onClose }) => {
         className="photo-details-modal__close-button" 
         onClick={onClose}
       >
-        <img src={closeSymbol} alt="close symbol" />
+        <img className='photo-details-modal__close-button' src={closeSymbol} alt="close" />
       </button>
     </div>
   );
