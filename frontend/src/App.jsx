@@ -21,7 +21,6 @@ const App = () => {
 
   const toggleModal = (photo) => {
     setIsModalVisible(!isModalVisible);
-    console.log('Toggled modal for', photo);
   };
 
   // const [photoData, setPhotoData] = useState(photos);

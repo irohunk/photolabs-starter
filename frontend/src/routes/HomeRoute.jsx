@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import TopNavigationBar from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
-import TopicList from 'components/TopicList';
+import PhotoDetailsModal from './PhotoDetailsModal';
+
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({ photos, topics, toggleModal }) => {
+const HomeRoute = ({ photos, topics }) => {
   
   const [favPhotos, setFavPhotos] = useState([]);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   // Check if there are any favorite photos
   const isFavPhotoExist = favPhotos.length > 0;
@@ -21,9 +23,14 @@ const HomeRoute = ({ photos, topics, toggleModal }) => {
     });
   };
 
-  // const toggleModal = (photo) => {
-  //   console.log('Toggled modal for', photo);
-  // };
+  const toggleModal = (photo) => {
+    setSelectedPhoto(photo);
+  };
+
+  const closeModal = () =>
+  {
+    setSelectedPhoto(null);
+  };
 
   return (
     <div className="home-route">
@@ -37,6 +44,12 @@ const HomeRoute = ({ photos, topics, toggleModal }) => {
         toggleModal={toggleModal} 
         onToggleFavourite={onToggleFavourite}
       />
+      {selectedPhoto && (
+        <PhotoDetailsModal 
+          photo={selectedPhoto} 
+          closeModal={closeModal} 
+        />
+      )}
     </div>
   );
 };
