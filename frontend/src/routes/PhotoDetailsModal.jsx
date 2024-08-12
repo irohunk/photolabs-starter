@@ -1,4 +1,5 @@
 import React from 'react';
+import PhotoList from 'components/PhotoList';
 
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
@@ -44,30 +45,11 @@ const PhotoDetailsModal = ({ photo, closeModal }) => {
         <span className="photo-details-modal__header">Similar Photos</span>
         <div className="photo-details-modal__images">
           {similar_photos ? (
-            Object.values(similar_photos).map((similarPhoto, index) => (
-              <div key={index} className="photo-details-modal__similar-photo">
-                <img
-                  className="photo-details-modal__image"
-                  src={similarPhoto.urls.regular}
-                  alt={`Similar photo ${index + 1}`}
-                />
-                <div className="photo-details-modal__similar-photo-details">
-                  <img
-                    className="photo-details-modal__photographer-profile"
-                    src={similarPhoto.user.profile}
-                    alt={`${similarPhoto.user.name}'s profile`}
-                  />
-                  <div className="photo-details-modal__photographer-info">
-                    <span className="photo-details-modal__header">
-                      {similarPhoto.user.name}
-                    </span>
-                    <span className="photo-details-modal__photographer-location">
-                      {similarPhoto.location.city}, {similarPhoto.location.country}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))
+            <PhotoList 
+              photos={Object.values(similar_photos)} 
+              toggleModal={() => {}}
+              onToggleFavourite={() => {}}
+            />
           ) : (
             <p>No similar photos available.</p>
           )}
