@@ -12,6 +12,7 @@ import topics from './mocks/topics';
 
 
 const App = () => {
+  console.log('Rendering App')
   const [isModalVisible, setIsModalVisible] = useState(false);
   // Sample state to manage favorite photos
   const [favPhotos, setFavPhotos] = useState([]);
@@ -30,13 +31,16 @@ const App = () => {
     }
   };
 
-  const onToggleFavourite = (photo, isFav) => {
+  const isFavourite = (id) => {
+    return favPhotos.includes(id)
+  }
+
+  const toggleFavourite = (id) => {
     setFavPhotos((prevFavPhotos) => {
-      const updatedFavPhotos = !prevFavPhotos.includes(photo.id)
-        ? [...prevFavPhotos, photo.id]
-        : prevFavPhotos.filter(favPhoto => favPhoto !== photo.id);
+      const updatedFavPhotos = !prevFavPhotos.includes(id)
+        ? [...prevFavPhotos, id]
+        : prevFavPhotos.filter(favPhoto => favPhoto !== id);
       
-      console.log('Updated favorite photos:', updatedFavPhotos);
       return updatedFavPhotos;
     });
   };
@@ -51,9 +55,11 @@ const App = () => {
       <HomeRoute 
         photos={photos} 
         topics={topics} 
-        favPhotos={favPhotos}
+        // favPhotos={favPhotos}
         toggleModal={toggleModal}
-        onToggleFavourite={onToggleFavourite}
+        onToggleFavourite={toggleFavourite}
+        favCount={favPhotos.length}
+        isFavourite={isFavourite}
       />
 
       {selectedPhoto && isModalVisible && (
@@ -61,8 +67,10 @@ const App = () => {
           isVisible={isModalVisible} 
           onClose={closeModal} 
           photo={selectedPhoto} 
-          onToggleFavourite={onToggleFavourite} // Pass the toggle function to the modal
-          favPhotos={favPhotos} // Pass the favorite photos to the modal
+          onToggleFavourite={toggleFavourite} // Pass the toggle function to the modal
+          // favPhotos={favPhotos} // Pass the favorite photos to the modal
+          isFavourite={isFavourite}
+          favourites={favPhotos.length}
         />
       )}
     </div>

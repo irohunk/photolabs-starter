@@ -3,25 +3,30 @@ import PhotoList from 'components/PhotoList';
 
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
+import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = ({ photo, onClose, onToggleFavourite, favPhotos }) => {
+const PhotoDetailsModal = ({ photo, onClose, onToggleFavourite, isFavourite }) => {
   if (!photo) return null;
 
   const { user, location, urls, similar_photos } = photo;
 
-  const isFav = favPhotos.some(favPhoto => favPhoto.id === photo.id);
+  const selected = isFavourite(photo.id)
 
   const handleToggleFavourite = () => {
-    onToggleFavourite(photo, !isFav);
+    onToggleFavourite(photo.id);
   };
 
   return (
     <div className="photo-details-modal">
-      <button 
-        className="photo-details-modal__close-button" 
+      <button
+        className="photo-details-modal__close-button"
         onClick={onClose}>
         <img src={closeSymbol} alt="close" />
       </button>
+
+      <PhotoFavButton
+        selected={selected}
+        onClick={handleToggleFavourite} />
 
       <div className="photo-details-modal__images">
         <img
@@ -29,12 +34,6 @@ const PhotoDetailsModal = ({ photo, onClose, onToggleFavourite, favPhotos }) => 
           src={urls.full}
           alt="Selected photo"
         />
-        <button 
-          className={`photo-details-modal__favourite-button ${isFav ? 'is-fav' : ''}`}
-          onClick={handleToggleFavourite}
-        >
-          {isFav ? 'Unfavourite' : 'Favourite'}
-        </button>
       </div>
 
       <div className="photo-details-modal__details">
@@ -57,11 +56,11 @@ const PhotoDetailsModal = ({ photo, onClose, onToggleFavourite, favPhotos }) => 
         <span className="photo-details-modal__header">Similar Photos</span>
         <div className="photo-details-modal__images">
           {similar_photos ? (
-            <PhotoList 
-              photos={Object.values(similar_photos)} 
-              toggleModal={() => {}} // Disable modal toggle for similar photos
+            <PhotoList
+              photos={Object.values(similar_photos)}
+              toggleModal={() => { }} // Disable modal toggle for similar photos
               onToggleFavourite={onToggleFavourite} // Pass the function here
-              favPhotos={favPhotos}
+              isFavourite={isFavourite}
             />
           ) : (
             <p>No similar photos available.</p>

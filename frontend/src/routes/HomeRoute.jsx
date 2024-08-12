@@ -5,44 +5,21 @@ import PhotoDetailsModal from './PhotoDetailsModal';
 
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({ photos, topics, favPhotos, toggleModal, onToggleFavourite }) => {
-  
-  // const [favPhotos, setFavPhotos] = useState([]);
-  // const [selectedPhoto, setSelectedPhoto] = useState(null);
-
-  // Check if there are any favorite photos
-  const isFavPhotoExist = favPhotos.length > 0;
-
-  // const onToggleFavourite = (photo, isFav) => {
-  //   setFavPhotos((prevFavPhotos) => {
-  //     if (isFav) {
-  //       return [...prevFavPhotos, photo];
-  //     } else {
-  //       return prevFavPhotos.filter(favPhoto => favPhoto.id !== photo.id);
-  //     }
-  //   });
-  // };
-
-  // const toggleModal = (photo) => {
-  //   setSelectedPhoto(photo);
-  // };
-
-  // const closeModal = () =>  {
-  //   setSelectedPhoto(null);
-  // };
+const HomeRoute = (props) => {
+  const { photos, topics, isFavourite, toggleModal, onToggleFavourite } = props
 
   return (
     <div className="home-route">
       <TopNavigationBar 
-        isFavPhotoExist={isFavPhotoExist} 
-        favCount={favPhotos.length}
+        // isFavPhotoExist={props.favourites} 
+        favCount={props.favCount}
         topics={topics} 
       />
       <PhotoList 
         photos={photos} 
         toggleModal={toggleModal} 
         onToggleFavourite={onToggleFavourite}
-        favPhotos={favPhotos}
+        isFavourite={isFavourite}
       />
     </div>
   );

@@ -1,22 +1,27 @@
 // frontend/src/components/PhotoList.jsx
 
 import React from 'react';
-import PhotoListItem from './PhotoListItem'; 
+import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
 import photos from 'mocks/photos';
 
-const PhotoList = ({ photos, toggleModal, onToggleFavourite, favPhotos }) => {
-  return(
-  <div className="photo-list">
-    {photos.map(photo => (
-      <PhotoListItem 
-        key={photo.id} 
-        photo={photo}
-        toggleModal={toggleModal}
-        onToggleFavourite={onToggleFavourite}
-        favPhotos={favPhotos} />
-    ))}
-  </div>
+const PhotoList = (props) => {
+  console.log('Rendering PhotoList')
+  return (
+    <div className="photo-list">
+      {props.photos.map(photo => {
+        const selected = props.isFavourite(photo.id);
+      
+        return (
+          <PhotoListItem
+            key={photo.id}
+            photo={photo}
+            showModal={() => props.toggleModal(photo)}
+            toggleFavourite={() => props.onToggleFavourite(photo.id)}
+            selected={selected} />
+        )
+      })}
+    </div>
   )
 };
 

@@ -2,29 +2,20 @@ import React, { useState } from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photo, toggleModal, onToggleFavourite, favPhotos }) => {
-  const { user, location, urls } = photo;
+const PhotoListItem = (props) => {
+  // const { photo, toggleModal } = props;
+  const { user, location, urls } = props.photo;
   
-  // State to handle the favorite status
-  // const [isFav, setIsFav] = useState(false);
-
-  // Function to toggle the favorite status
-  const handleToggle = () => {
-    // const newFavStatus = !isFav;
-    // setIsFav(newFavStatus);
-    onToggleFavourite(photo);
-  };
-
 
   return (
     <div className="photo-listitem">
       <div className="photo-container">
-        <PhotoFavButton selected={favPhotos.includes(photo.id)} handleToggle={handleToggle} />
+        <PhotoFavButton selected={props.selected} onClick={props.toggleFavourite} />
         <img 
           className="photo-list__image" 
           src={urls.regular}
           alt={location.city}
-          onClick={() => toggleModal(photo)} 
+          onClick={props.showModal} 
         />
       </div>
       <div className="photo-list__user-details">
