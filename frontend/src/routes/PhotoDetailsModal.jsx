@@ -4,16 +4,22 @@ import PhotoList from 'components/PhotoList';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({ photo, closeModal }) => {
+const PhotoDetailsModal = ({ photo, onClose, onToggleFavourite, favPhotos }) => {
   if (!photo) return null;
 
   const { user, location, urls, similar_photos } = photo;
+
+  const isFav = favPhotos.some(favPhoto => favPhoto.id === photo.id);
+
+  const handleToggleFavourite = () => {
+    onToggleFavourite(photo, !isFav);
+  };
 
   return (
     <div className="photo-details-modal">
       <button 
         className="photo-details-modal__close-button" 
-        onClick={closeModal}>
+        onClick={onClose}>
         <img src={closeSymbol} alt="close" />
       </button>
 
@@ -23,6 +29,12 @@ const PhotoDetailsModal = ({ photo, closeModal }) => {
           src={urls.full}
           alt="Selected photo"
         />
+        <button 
+          className={`photo-details-modal__favourite-button ${isFav ? 'is-fav' : ''}`}
+          onClick={handleToggleFavourite}
+        >
+          {isFav ? 'Unfavourite' : 'Favourite'}
+        </button>
       </div>
 
       <div className="photo-details-modal__details">
@@ -47,8 +59,9 @@ const PhotoDetailsModal = ({ photo, closeModal }) => {
           {similar_photos ? (
             <PhotoList 
               photos={Object.values(similar_photos)} 
-              toggleModal={() => {}}
-              onToggleFavourite={() => {}}
+              toggleModal={() => {}} // Disable modal toggle for similar photos
+              onToggleFavourite={onToggleFavourite} // Pass the function here
+              favPhotos={favPhotos}
             />
           ) : (
             <p>No similar photos available.</p>

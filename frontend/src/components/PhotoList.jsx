@@ -5,7 +5,7 @@ import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
 import photos from 'mocks/photos';
 
-const PhotoList = ({ photos, toggleModal, onToggleFavourite }) => {
+const PhotoList = ({ photos, toggleModal, onToggleFavourite, favPhotos }) => {
   return(
   <div className="photo-list">
     {photos.map(photo => (
@@ -13,7 +13,8 @@ const PhotoList = ({ photos, toggleModal, onToggleFavourite }) => {
         key={photo.id} 
         photo={photo}
         toggleModal={toggleModal}
-        onToggleFavourite={onToggleFavourite} />
+        onToggleFavourite={onToggleFavourite}
+        favPhotos={favPhotos} />
     ))}
   </div>
   )

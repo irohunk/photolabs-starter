@@ -14,18 +14,36 @@ import topics from './mocks/topics';
 const App = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   // Sample state to manage favorite photos
-  // const [favPhotos, setFavPhotos] = useState([]);
+  const [favPhotos, setFavPhotos] = useState([]);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   // Check if there are any favorite photos
   // const isFavPhotoExist = favPhotos.length > 0;
 
   const toggleModal = (photo) => {
-    setIsModalVisible(!isModalVisible);
+    if (photo) {
+      setSelectedPhoto(photo);
+      setIsModalVisible(true);
+    } else {
+      setSelectedPhoto(null);
+      setIsModalVisible(false);
+    }
   };
 
-  // const [photoData, setPhotoData] = useState(photos);
-  // const [topicData, setTopicData] = useState(topics);
-
+  const onToggleFavourite = (photo, isFav) => {
+    setFavPhotos((prevFavPhotos) => {
+      const updatedFavPhotos = !prevFavPhotos.includes(photo.id)
+        ? [...prevFavPhotos, photo.id]
+        : prevFavPhotos.filter(favPhoto => favPhoto !== photo.id);
+      
+      console.log('Updated favorite photos:', updatedFavPhotos);
+      return updatedFavPhotos;
+    });
+  };
+  
+  const closeModal = () => {
+    setIsModalVisible(false);
+  }
   return (
     <div className="App">
       {/* <TopNavigationBar isFavPhotoExist={isFavPhotoExist} />
@@ -33,13 +51,20 @@ const App = () => {
       <HomeRoute 
         photos={photos} 
         topics={topics} 
+        favPhotos={favPhotos}
         toggleModal={toggleModal}
+        onToggleFavourite={onToggleFavourite}
       />
 
-      <PhotoDetailsModal 
-        isVisible={isModalVisible} 
-        onClose={toggleModal} 
-      />
+      {selectedPhoto && isModalVisible && (
+        <PhotoDetailsModal 
+          isVisible={isModalVisible} 
+          onClose={closeModal} 
+          photo={selectedPhoto} 
+          onToggleFavourite={onToggleFavourite} // Pass the toggle function to the modal
+          favPhotos={favPhotos} // Pass the favorite photos to the modal
+        />
+      )}
     </div>
   );
 };

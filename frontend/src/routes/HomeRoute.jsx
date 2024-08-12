@@ -5,31 +5,31 @@ import PhotoDetailsModal from './PhotoDetailsModal';
 
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({ photos, topics }) => {
+const HomeRoute = ({ photos, topics, favPhotos, toggleModal, onToggleFavourite }) => {
   
-  const [favPhotos, setFavPhotos] = useState([]);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  // const [favPhotos, setFavPhotos] = useState([]);
+  // const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   // Check if there are any favorite photos
   const isFavPhotoExist = favPhotos.length > 0;
 
-  const onToggleFavourite = (photo, isFav) => {
-    setFavPhotos((prevFavPhotos) => {
-      if (isFav) {
-        return [...prevFavPhotos, photo];
-      } else {
-        return prevFavPhotos.filter(favPhoto => favPhoto.id !== photo.id);
-      }
-    });
-  };
+  // const onToggleFavourite = (photo, isFav) => {
+  //   setFavPhotos((prevFavPhotos) => {
+  //     if (isFav) {
+  //       return [...prevFavPhotos, photo];
+  //     } else {
+  //       return prevFavPhotos.filter(favPhoto => favPhoto.id !== photo.id);
+  //     }
+  //   });
+  // };
 
-  const toggleModal = (photo) => {
-    setSelectedPhoto(photo);
-  };
+  // const toggleModal = (photo) => {
+  //   setSelectedPhoto(photo);
+  // };
 
-  const closeModal = () =>  {
-    setSelectedPhoto(null);
-  };
+  // const closeModal = () =>  {
+  //   setSelectedPhoto(null);
+  // };
 
   return (
     <div className="home-route">
@@ -42,13 +42,8 @@ const HomeRoute = ({ photos, topics }) => {
         photos={photos} 
         toggleModal={toggleModal} 
         onToggleFavourite={onToggleFavourite}
+        favPhotos={favPhotos}
       />
-      {selectedPhoto && (
-        <PhotoDetailsModal 
-          photo={selectedPhoto} 
-          closeModal={closeModal} 
-        />
-      )}
     </div>
   );
 };
