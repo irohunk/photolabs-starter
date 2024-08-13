@@ -18,15 +18,17 @@ const PhotoDetailsModal = ({ photo, onClose, onToggleFavourite, isFavourite }) =
 
   return (
     <div className="photo-details-modal">
-      <button
-        className="photo-details-modal__close-button"
-        onClick={onClose}>
-        <img src={closeSymbol} alt="close" />
-      </button>
+        <button
+          className="photo-details-modal__close-button"
+          onClick={onClose}>
+          <img src={closeSymbol} alt="close" />
+        </button>
 
-      <PhotoFavButton
-        selected={selected}
-        onClick={handleToggleFavourite} />
+      <div className="photo-list_fav-icon">
+        <PhotoFavButton
+          selected={selected}
+          onClick={handleToggleFavourite} />
+      </div>
 
       <div className="photo-details-modal__images">
         <img
@@ -45,15 +47,17 @@ const PhotoDetailsModal = ({ photo, onClose, onToggleFavourite, isFavourite }) =
           />
           <div className="photo-details-modal__photographer-info">
             <span className="photo-details-modal__header">{user.name}</span>
+            <br />
             <span className="photo-details-modal__photographer-location">
               {location.city}, {location.country}
             </span>
           </div>
         </div>
+        <br />
       </div>
 
       <div className="photo-details-modal__similar-photos">
-        <span className="photo-details-modal__header">Similar Photos</span>
+        <span className="photo-details-modal__header">Related Photos</span>
         <div className="photo-details-modal__images">
           {similar_photos ? (
             <PhotoList
