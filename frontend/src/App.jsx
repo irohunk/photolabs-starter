@@ -2,48 +2,17 @@ import React from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-
-import './App.scss';
+import useApplicationData from 'hooks/useApplicationData';
 
 import photos from './mocks/photos';
 import topics from './mocks/topics';
-import useApplicationData from 'hooks/useApplicationData';
+
+import './App.scss';
+
 
 
 const App = () => {
   console.log('Rendering App')
-  // const [isModalVisible, setIsModalVisible] = useState(false);
-  // const [favPhotos, setFavPhotos] = useState([]);
-  // const [selectedPhoto, setSelectedPhoto] = useState(null);
-
-
-  // const toggleModal = (photo) => {
-  //   if (photo) {
-  //     setSelectedPhoto(photo);
-  //     setIsModalVisible(true);
-  //   } else {
-  //     setSelectedPhoto(null);
-  //     setIsModalVisible(false);
-  //   }
-  // };
-
-  // const isFavourite = (id) => {
-  //   return favPhotos.includes(id)
-  // }
-
-  // const toggleFavourite = (id) => {
-  //   setFavPhotos((prevFavPhotos) => {
-  //     const updatedFavPhotos = !prevFavPhotos.includes(id)
-  //       ? [...prevFavPhotos, id]
-  //       : prevFavPhotos.filter(favPhoto => favPhoto !== id);
-      
-  //     return updatedFavPhotos;
-  //   });
-  // };
-  
-  // const closeModal = () => {
-  //   setIsModalVisible(false);
-  // }
 
   const {
     isModalVisible,
