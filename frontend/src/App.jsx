@@ -9,7 +9,6 @@ import './App.scss';
 
 
 const App = () => {
-  console.log('Rendering App')
 
   const {
     isModalVisible,

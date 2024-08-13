@@ -6,7 +6,6 @@ import '../styles/PhotoList.scss';
 // import photos from 'mocks/mockphotos';
 
 const PhotoList = (props) => {
-  console.log('Rendering PhotoList')
   return (
     <div className="photo-list">
       {props.photos.map(photo => {
