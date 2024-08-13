@@ -3,7 +3,6 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-  // const { photo, toggleModal } = props;
   const { user, location, urls } = props.photo;
   
 

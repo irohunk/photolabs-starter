@@ -5,11 +5,6 @@ import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
 
-  // const handleClick = () => {
-  //   setIsFav(!isFav);
-  //   handleToggle();
-  // };
-
   return (
     <div className={`photo-list__fav-icon ${props.selected ? 'active' : ''}`} onClick={props.onClick}>
       <div className="photo-list__fav-icon-svg">

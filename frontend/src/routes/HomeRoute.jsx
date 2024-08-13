@@ -11,7 +11,6 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigationBar 
-        // isFavPhotoExist={props.favourites} 
         favCount={props.favCount}
         topics={topics} 
       />
