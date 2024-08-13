@@ -6,17 +6,18 @@ import PhotoDetailsModal from './PhotoDetailsModal';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  const { photos, topics, isFavourite, toggleModal, onToggleFavourite } = props
+  const { photos, topics, isFavourite, toggleModal, onToggleFavourite, onTopicSelect } = props
 
   return (
     <div className="home-route">
-      <TopNavigationBar 
+      <TopNavigationBar
         favCount={props.favCount}
-        topics={topics} 
+        topics={topics}
+        onTopicSelect={onTopicSelect}
       />
-      <PhotoList 
-        photos={photos} 
-        toggleModal={toggleModal} 
+      <PhotoList
+        photos={photos}
+        toggleModal={toggleModal}
         onToggleFavourite={onToggleFavourite}
         isFavourite={isFavourite}
       />

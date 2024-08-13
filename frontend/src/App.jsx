@@ -4,9 +4,6 @@ import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
-// import photos from './dont_use_mocks/photos';
-// import topics from './dont_use_mocks/topics';
-
 import './App.scss';
 
 
@@ -22,18 +19,16 @@ const App = () => {
     isFavourite,
     toggleFavourite,
     closeModal,
-    state
+    state,
+    onTopicSelect
   } = useApplicationData();
 
   return (
     <div className="App">
-      {/* <TopNavigationBar isFavPhotoExist={isFavPhotoExist} />
-      <PhotoList toggleModal={toggleModal} /> */}
-      <HomeRoute 
-        // photos={photos} 
-        photos={state.photoData} 
-        topics={state.topicData} 
-        // favPhotos={favPhotos}
+      <HomeRoute
+        photos={state.photoData}
+        topics={state.topicData}
+        onTopicSelect={onTopicSelect}
         toggleModal={toggleModal}
         onToggleFavourite={toggleFavourite}
         favCount={favPhotos.length}
@@ -41,12 +36,11 @@ const App = () => {
       />
 
       {selectedPhoto && isModalVisible && (
-        <PhotoDetailsModal 
-          isVisible={isModalVisible} 
-          onClose={closeModal} 
-          photo={selectedPhoto} 
-          onToggleFavourite={toggleFavourite} // Pass the toggle function to the modal
-          // favPhotos={favPhotos} // Pass the favorite photos to the modal
+        <PhotoDetailsModal
+          isVisible={isModalVisible}
+          onClose={closeModal}
+          photo={selectedPhoto}
+          onToggleFavourite={toggleFavourite}
           isFavourite={isFavourite}
           favourites={favPhotos.length}
         />
