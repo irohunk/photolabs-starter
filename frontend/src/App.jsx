@@ -4,8 +4,8 @@ import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
-import photos from './mocks/photos';
-import topics from './mocks/topics';
+// import photos from './dont_use_mocks/photos';
+// import topics from './dont_use_mocks/topics';
 
 import './App.scss';
 
@@ -21,7 +21,8 @@ const App = () => {
     toggleModal,
     isFavourite,
     toggleFavourite,
-    closeModal
+    closeModal,
+    state
   } = useApplicationData();
 
   return (
@@ -29,8 +30,9 @@ const App = () => {
       {/* <TopNavigationBar isFavPhotoExist={isFavPhotoExist} />
       <PhotoList toggleModal={toggleModal} /> */}
       <HomeRoute 
-        photos={photos} 
-        topics={topics} 
+        // photos={photos} 
+        photos={state.photoData} 
+        topics={state.topicData} 
         // favPhotos={favPhotos}
         toggleModal={toggleModal}
         onToggleFavourite={toggleFavourite}

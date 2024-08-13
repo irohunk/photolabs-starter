@@ -24,13 +24,10 @@ const PhotoDetailsModal = ({ photo, onClose, onToggleFavourite, isFavourite }) =
           <img src={closeSymbol} alt="close" />
         </button>
 
-      <div className="photo-list_fav-icon">
+      <div className="photo-details-modal__images">
         <PhotoFavButton
           selected={selected}
           onClick={handleToggleFavourite} />
-      </div>
-
-      <div className="photo-details-modal__images">
         <img
           className="photo-details-modal__image"
           src={urls.full}

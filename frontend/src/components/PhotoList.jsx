@@ -3,7 +3,7 @@
 import React from 'react';
 import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
-import photos from 'mocks/photos';
+// import photos from 'mocks/mockphotos';
 
 const PhotoList = (props) => {
   console.log('Rendering PhotoList')
