@@ -25,20 +25,20 @@ npm start
 
 
 ## Screenshots
-!["Photos"]
-https://github.com/irohunk/photolabs-starter/blob/main/docs/photos.png?raw=true
+### Photos
+!["Photos"](https://github.com/irohunk/photolabs-starter/blob/main/docs/photos.png?raw=true)
 
-!["Topics"]
-https://github.com/irohunk/photolabs-starter/blob/main/docs/topics.png?raw=true
+### Topics
+!["Topics"](https://github.com/irohunk/photolabs-starter/blob/main/docs/topics.png?raw=true)
 
-!["Notifications"]
-https://github.com/irohunk/photolabs-starter/blob/main/docs/notifications.png?raw=true
+### Notifications
+!["Notifications"](https://github.com/irohunk/photolabs-starter/blob/main/docs/notifications.png?raw=true)
 
-!["Modal"]
-https://github.com/irohunk/photolabs-starter/blob/main/docs/modal.png?raw=true
+### Modal
+!["Modal"](https://github.com/irohunk/photolabs-starter/blob/main/docs/modal.png?raw=true)
 
-!["Related Photos"]
-https://github.com/irohunk/photolabs-starter/blob/main/docs/related_photos.png?raw=true
+### Related Photos
+!["Related Photos"](https://github.com/irohunk/photolabs-starter/blob/main/docs/related_photos.png?raw=true)
 
-!["Topic Photos"]
-https://github.com/irohunk/photolabs-starter/blob/main/docs/topic_photos.png?raw=true
+### Topic Photos
+!["Topic Photos"](https://github.com/irohunk/photolabs-starter/blob/main/docs/topic_photos.png?raw=true)
